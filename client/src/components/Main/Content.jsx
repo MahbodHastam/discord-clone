@@ -1,6 +1,9 @@
 /* eslint-disable no-self-compare */
 import React from 'react';
 import api from '../../api';
+import { SiGooglemessages } from 'react-icons/si';
+import { MdClose } from 'react-icons/md';
+import IsOnline from '../Helpers/IsOnline';
 
 class Content extends React.Component {
   constructor(props) {
@@ -17,26 +20,49 @@ class Content extends React.Component {
   }
 
   render() {
+    if (!this.state.friends.length) {
+      return (
+        <div>no one is online :/</div>
+      );
+    }
+    const { friends } = this.state;
     return (
       <div id="content">
-        {1 === 1 ? <FriendsContent friends={this.state.friends} /> : <ChannelContent />}
+        {1 === 1 ? <FriendsContent friends={friends} /> : <ChannelContent />}
       </div>
     );
   }
 }
 
 const FriendsContent = (friends) => {
-  console.log(friends);
-  return <div>okay</div>;
-  /* return (
+  return (
     <div className="friends-content">
       
-      {!friends.length ? <div>It's too Quiet...</div> : friends.map(friend => (
-        <div>ehem ohum aha</div>
+      {friends.friends.map((friend) => (
+        <div key={friend.id} className="friend-item">
+          <div className="avatar">
+            <img src={friend.avatar} alt={''} />
+            <IsOnline bool={friend.isOnline} />
+          </div>
+          <div className="information">
+            <span>{friend.name}</span>
+            <small>{friend.status}</small>
+          </div>
+          <div className="actions">
+            <button className="btn tooltip-wrapper">
+              <SiGooglemessages />
+              <span className="tooltip-content" style={{ fontSize: '.7em', bottom: '-10px' }}>Message</span>
+            </button>
+            <button className="btn tooltip-wrapper">
+              <MdClose />
+              <span className="tooltip-content" style={{ fontSize: '.7em', bottom: '-10px' }}>Remove Friend</span>
+            </button>
+          </div>
+        </div>
       ))}
       
     </div>
-  ); */
+  );
 };
 
 const ChannelContent = () => {

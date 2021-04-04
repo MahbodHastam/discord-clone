@@ -49,3 +49,21 @@
     }
   }
 }
+
+.isOnline {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 3px solid $clr-light;
+
+  &--true {
+    background: $clr-success;
+  }
+
+  &--false {
+    background: $clr-text;
+  }
+}
