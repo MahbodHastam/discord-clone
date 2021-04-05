@@ -92,6 +92,10 @@ button {
 
     &:hover, &.active {
 
+      img, .profile-avatar-using-words {
+        border-radius: 20% !important;
+      }
+
       .profile-avatar-using-words {
         background: $clr-primary;
         color: $clr-light;
@@ -101,6 +105,7 @@ button {
     &:hover::before, &.active::before {
       width: 6px;
       height: 70%;
+      background: $clr-dark !important;
     }
 
     &::before {
@@ -112,8 +117,15 @@ button {
       width: 4px;
       height: 20%;
       border-radius: 600rem;
-      background: $clr-dark;
+      background: transparent;
       transition: all .112s ease;
+    }
+
+    &.has-unreadMessages {
+
+      &::before {
+        background: $clr-dark;
+      }
     }
 
     img {
@@ -156,6 +168,18 @@ button {
       opacity: 0;
       transition: all .112s ease;
     }
+
+    .unreadMessages {
+      position: absolute;
+      bottom: -5px;
+      right: -5px;
+      border: 3px solid $clr-light;
+      border-radius: 100rem;
+      background: $clr-danger;
+      color: $clr-light;
+      font-size: .8em;
+      padding: .1em .5em;
+    }
   }
 }
 
@@ -167,6 +191,7 @@ button {
   align-items: center;
   text-align: center;
   padding: 0 .4em;
+  position: relative;
     
   .topbar {
     width: 100%;
@@ -200,6 +225,58 @@ button {
 
     .button {
       margin-top: .5em;
+    }
+  }
+
+  #userPanel {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    // min-height: 30px;
+    padding: 1em .3em;
+    background: $clr-light-darken-2;
+
+    .information {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: .4em;
+
+      .avatar {
+        position: relative;
+  
+        img {
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+        }
+      }
+
+      .name {
+        font-size: .9em;
+      }
+    }
+    
+    .actions {
+        
+      button {
+        padding-top: 5px;
+        padding: 10px;
+        background: transparent;
+        font-size: 1.2em;
+        transition: none;
+        display: flex;
+        align-items: center;
+
+        &:hover {
+          background: $clr-light-darken-3;
+        }
+      }
     }
   }
 }

@@ -17,6 +17,10 @@ class Servers extends React.Component {
     this.setState({ servers });
   }
 
+  hasUnreadMessage = (unreadMessagesCount) => {
+    return unreadMessagesCount !== 0;
+  }
+
   render() {
     return (
       <div id="servers">
@@ -28,9 +32,10 @@ class Servers extends React.Component {
         </div>
 
         {this.state.servers.map(server => (
-          <div className="server" key={server.id}>
+          <div className={`server ${this.hasUnreadMessage(server.unreadMessages) ? 'has-unreadMessages' : ''}`} key={server.id}>
             <GenerateProfile image={server.avatar} name={`${server.name.charAt(0)}${server.name.charAt(1)}`} />
             <span className="title">{server.name}</span>
+            {server.unreadMessages !== 0 ? <span className="unreadMessages">{server.unreadMessages}</span> : ''}
           </div>
         ))}
 

@@ -23,11 +23,21 @@ app.get('/user/friends-list', (req, res) => {
 
 app.get('/user/servers-list', (req, res) => {
   res.json([
-    {id: 1, name: "DibDmini co.", avatar: `http://localhost:${PORT}/img/1.jpg`, unreadMessages: 0,},
-    {id: 2, name: "Oskol's Server", avatar: `http://localhost:${PORT}/img/2.jpg`, unreadMessages: 0,},
-    {id: 3, name: "No Name Bemola", avatar: null, unreadMessages: 1,},
-    {id: 4, name: "Luxury Cats", avatar: `http://localhost:${PORT}/img/3.jpg`, unreadMessages: 0,},
+    {id: 1, name: "No Name Bemola", avatar: null, unreadMessages: 1,},
+    {id: 2, name: "DibDmini co.", avatar: `http://localhost:${PORT}/img/1.jpg`, unreadMessages: 0,},
+    {id: 3, name: "Oskol's Server", avatar: `http://localhost:${PORT}/img/2.jpg`, unreadMessages: 0,},
+    {id: 4, name: "Luxury Cats", avatar: `http://localhost:${PORT}/img/3.jpg`, unreadMessages: 321,},
+    {id: 5, name: "Daalli moosheee", avatar: null, unreadMessages: 0,},
+    {id: 6, name: "Fazfazoon", avatar: null, unreadMessages: 4,},
   ]);
+});
+
+app.get('/user/self', (req, res) => {
+  res.json({
+    name: 'Mahbod Hastam',
+    status: 'LMFAO',
+    avatar: `http://localhost:${PORT}/img/4.jpg`,
+  });
 });
 
 app.listen(PORT, () => {

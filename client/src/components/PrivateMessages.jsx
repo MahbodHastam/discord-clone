@@ -1,13 +1,15 @@
 import React from 'react';
 import { MdClose } from 'react-icons/md';
 import api from '../api';
+import UserPanel from './UserPanel';
 
 class PrivateMessages extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      friends: []
+      friends: [],
+      user: {},
     };
   }
 
@@ -20,7 +22,8 @@ class PrivateMessages extends React.Component {
       ]
     }); */
     const friends = await api.getFriends();
-    this.setState({ friends });
+    const user = await api.getUser();
+    this.setState({ friends, user });
   }
 
   friendClickEvent = (friend) => {
@@ -57,6 +60,7 @@ class PrivateMessages extends React.Component {
   }
 
   render() {
+    const user = this.state.user;
     return (
       <div id="leftSide">
         <div className="topbar">
@@ -65,6 +69,7 @@ class PrivateMessages extends React.Component {
         <div className="friends-wrapper">
           {this.renderFriends(this.state.friends)}
         </div>
+        <UserPanel user={user} />
       </div>
     );
   }
