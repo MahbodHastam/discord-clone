@@ -67,6 +67,96 @@ button {
 
 #servers {
   background: $clr-light-darken-2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  padding-top: 1em;
+
+  .server {
+    position: relative;
+
+    &:hover {
+
+      img, .profile-avatar-using-words {
+        border-radius: 20% !important;
+      }
+
+      .title {
+        visibility: visible;
+        opacity: 1;
+        left: 110%;
+        transform: translateY(50%) scale(1);
+      }
+    }
+
+    &:hover, &.active {
+
+      .profile-avatar-using-words {
+        background: $clr-primary;
+        color: $clr-light;
+      }
+    }
+
+    &:hover::before, &.active::before {
+      width: 6px;
+      height: 70%;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: -1em;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 20%;
+      border-radius: 600rem;
+      background: $clr-dark;
+      transition: all .112s ease;
+    }
+
+    img {
+      border-radius: 40%;
+      width: 42px;
+      height: 42px;
+      transition: all .112s ease;
+    }
+
+    .profile-avatar-using-words {
+      border-radius: 40%;
+      background: $clr-light-darken-1;
+      width: 42px;
+      height: 42px;
+      font-size: 1em;
+      color: $clr-text;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all .112s ease;
+    }
+
+    .title {
+      position: absolute;
+      display: block;
+      text-align: center;
+      width: auto;
+      white-space: nowrap;
+      bottom: 50%;
+      transform: translateY(50%) scale(.8);
+      left: 90%;
+      background: $clr-light;
+      color: $clr-dark;
+      padding: .5em;
+      border-radius: .4rem;
+      box-shadow: 0 1px 8px rgba($clr-dark, .112);
+      z-index: 2;
+      visibility: hidden;
+      opacity: 0;
+      transition: all .112s ease;
+    }
+  }
 }
 
 #leftSide {

@@ -1,8 +1,7 @@
+import React from 'react';
+
 const IsOnline = (bool) => {
-  console.log(bool)
-  return (
-    <div className={`isOnline isOnline--${bool ? 'true' : 'false'}`}></div>
-  );
+  return <div className={`isOnline isOnline--${bool ? 'true' : 'false'}`}/>;
 };
 
 export default IsOnline;
